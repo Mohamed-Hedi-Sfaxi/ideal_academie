@@ -7,10 +7,10 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-sub-header">
-                            <h3 class="page-title">Students</h3>
+                            <h3 class="page-title">Etudiants</h3>
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('student/list') }}">Student</a></li>
-                                <li class="breadcrumb-item active">All Students</li>
+                                <li class="breadcrumb-item"><a href="{{ route('student/list') }}">Etudiant</a></li>
+                                <li class="breadcrumb-item active">Tous Les Etudiants</li>
                             </ul>
                         </div>
                     </div>
@@ -24,7 +24,7 @@
                             <div class="page-header">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h3 class="page-title">Students</h3>
+                                        <h3 class="page-title">Etudiants</h3>
                                     </div>
                                     <div class="col-auto text-end float-end ms-auto download-grp">
                                         <a href="{{ route('student/list') }}" class="btn btn-outline-gray me-2"><i class="feather-list"></i></a>
@@ -47,7 +47,7 @@
                                                     </div>
                                                     <div class="student-content pb-0">
                                                         <h5><a href="{{ url('student/profile/'.$list->id) }}">{{ $list->first_name }} {{ $list->last_name }}</a></h5>
-                                                        <h6>Student</h6>
+                                                        <h6>Etudiant</h6>
                                                     </div>
                                                 </div>
                                             </div>

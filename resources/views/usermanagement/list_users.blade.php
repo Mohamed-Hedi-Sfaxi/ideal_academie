@@ -6,10 +6,10 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">List Users</h3>
+                    <h3 class="page-title">Liste D'utilisateurs</h3>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">List Users</li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Tableau De Bord</a></li>
+                        <li class="breadcrumb-item active">Liste D'utilisateurs</li>
                     </ul>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                         <div class="page-header">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h3 class="page-title">Users List</h3>
+                                    <h3 class="page-title">Liste D'utilisateurs</h3>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
                                     <a href="add-time-table.html" class="btn btn-primary">
@@ -38,14 +38,14 @@
                                 class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                                 <thead class="student-thread">
                                     <tr>
-                                        <th>User ID</th>
-                                        <th>Profile</th>
-                                        <th>Name</th>
+                                        <th>ID</th>
+                                        <th>Profil</th>
+                                        <th>Nom</th>
                                         <th>Email</th>
-                                        <th>Phone Number</th>
-                                        <th>Date Join</th>
-                                        <th>Role Name</th>
-                                        <th>Status</th>
+                                        <th>Num Téléphone</th>
+                                        <th>Date D'adhésion</th>
+                                        <th>Rôle</th>
+                                        <th>Statut</th>
                                         <th class="text-end">Action</th>
                                     </tr>
                                 </thead>
@@ -83,7 +83,7 @@
                                                 <a href="{{ url('view/user/edit/'.$list->user_id) }}"class="btn btn-sm bg-danger-light">
                                                     <i class="feather-edit"></i>
                                                 </a>
-                                                @if (Session::get('role_name') === 'Super Admin')
+                                                @if (Session::get('role_name') === 'Directeur')
                                                 <a class="btn btn-sm bg-danger-light user_delete" data-bs-toggle="modal" data-bs-target="#deleteUser">
                                                     <i class="feather-trash-2 me-1"></i>
                                                 </a>

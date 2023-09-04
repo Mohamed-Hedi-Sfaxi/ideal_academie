@@ -36,7 +36,7 @@ class UserManagementController extends Controller
     {
         DB::beginTransaction();
         try {
-            if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin')
+            if (Session::get('role_name') === 'RH' || Session::get('role_name') === 'Directeur')
             {
                 $user_id       = $request->user_id;
                 $name         = $request->name;
@@ -96,7 +96,7 @@ class UserManagementController extends Controller
     {
         DB::beginTransaction();
         try {
-            if (Session::get('role_name') === 'Super Admin')
+            if (Session::get('role_name') === 'Directeur')
             {
                 if ($request->avatar =='photo_defaults.jpg')
                 {

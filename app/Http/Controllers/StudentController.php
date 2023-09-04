@@ -35,15 +35,12 @@ class StudentController extends Controller
         $request->validate([
             'first_name'    => 'required|string',
             'last_name'     => 'required|string',
-            'gender'        => 'required|not_in:0',
             'date_of_birth' => 'required|string',
             'roll'          => 'required|string',
-            'blood_group'   => 'required|string',
             'religion'      => 'required|string',
             'email'         => 'required|email',
             'class'         => 'required|string',
             'section'       => 'required|string',
-            'admission_id'  => 'required|string',
             'phone_number'  => 'required',
             'upload'        => 'required|image',
         ]);
@@ -57,15 +54,12 @@ class StudentController extends Controller
                 $student = new Student;
                 $student->first_name   = $request->first_name;
                 $student->last_name    = $request->last_name;
-                $student->gender       = $request->gender;
                 $student->date_of_birth= $request->date_of_birth;
                 $student->roll         = $request->roll;
-                $student->blood_group  = $request->blood_group;
                 $student->religion     = $request->religion;
                 $student->email        = $request->email;
                 $student->class        = $request->class;
                 $student->section      = $request->section;
-                $student->admission_id = $request->admission_id;
                 $student->phone_number = $request->phone_number;
                 $student->upload = $upload_file;
                 $student->save();

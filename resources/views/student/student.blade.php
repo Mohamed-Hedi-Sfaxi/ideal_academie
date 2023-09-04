@@ -7,10 +7,10 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-sub-header">
-                            <h3 class="page-title">Students</h3>
+                            <h3 class="page-title">Etudiants</h3>
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('student/list') }}">Student</a></li>
-                                <li class="breadcrumb-item active">All Students</li>
+                                <li class="breadcrumb-item"><a href="{{ route('student/list') }}">Etudiant</a></li>
+                                <li class="breadcrumb-item active">Tous Les Etudiants</li>
                             </ul>
                         </div>
                     </div>
@@ -22,22 +22,22 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search by ID ...">
+                            <input type="text" class="form-control" placeholder="Chercher par ID ...">
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search by Name ...">
+                            <input type="text" class="form-control" placeholder="Chercher par Nom ...">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search by Phone ...">
+                            <input type="text" class="form-control" placeholder="Chercher par Téléphone ...">
                         </div>
                     </div>
                     <div class="col-lg-2">
                         <div class="search-student-btn">
-                            <button type="btn" class="btn btn-primary">Search</button>
+                            <button type="btn" class="btn btn-primary">Chercher</button>
                         </div>
                     </div>
                 </div>
@@ -49,12 +49,12 @@
                             <div class="page-header">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h3 class="page-title">Students</h3>
+                                        <h3 class="page-title">Etudiants</h3>
                                     </div>
                                     <div class="col-auto text-end float-end ms-auto download-grp">
                                         <a href="{{ route('student/list') }}" class="btn btn-outline-gray me-2 active"><i class="feather-list"></i></a>
                                         <a href="{{ route('student/grid') }}" class="btn btn-outline-gray me-2"><i class="feather-grid"></i></a>
-                                        <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
+                                        <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Télécharger</a>
                                         <a href="{{ route('student/add/page') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                                     </div>
                                 </div>
@@ -70,13 +70,13 @@
                                                     <input class="form-check-input" type="checkbox" value="something">
                                                 </div>
                                             </th>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Class</th>
-                                            <th>DOB</th>
-                                            <th>Parent Name</th>
-                                            <th>Mobile Number</th>
-                                            <th>Address</th>
+                                            <th>CIN</th>
+                                            <th>Nom & Prénom</th>
+                                            <th>Groupe</th>
+                                            <th>Date de Naissance</th>
+                                            <th>Num Téléphone</th>
+                                            <th>Formation</th>
+                                            <th>Paiement</th>
                                             <th class="text-end">Action</th>
                                         </tr>
                                     </thead>
@@ -88,7 +88,7 @@
                                                     <input class="form-check-input" type="checkbox" value="something">
                                                 </div>
                                             </td>
-                                            <td>STD{{ ++$key }}</td>
+                                            <td>{{ $list->roll }}</td>
                                             <td hidden class="id">{{ $list->id }}</td>
                                             <td hidden class="avatar">{{ $list->upload }}</td>
                                             <td>
@@ -99,11 +99,11 @@
                                                     <a href="student-details.html">{{ $list->first_name }} {{ $list->last_name }}</a>
                                                 </h2>
                                             </td>
-                                            <td>{{ $list->class }} {{ $list->section }}</td>
+                                            <td>{{ $list->class }}</td>
                                             <td>{{ $list->date_of_birth }}</td>
-                                            <td>Soeng Soeng</td>
                                             <td>{{ $list->phone_number }}</td>
-                                            <td>110 Sen Sok Steet,PP</td>
+                                            <td>{{ $list->section }}</td>
+                                            <td>{{ $list->religion }}</td>
                                             <td class="text-end">
                                                 <div class="actions">
                                                     <a href="{{ url('student/edit/'.$list->id) }}" class="btn btn-sm bg-danger-light">

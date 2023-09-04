@@ -28,7 +28,7 @@
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Name <span class="login-danger">*</span></label>
+                                            <label>Nom <span class="login-danger">*</span></label>
                                             <input type="text" class="form-control" name="name" value="{{ $users->name }}">
                                             <input type="hidden" class="form-control" name="user_id" value="{{ $users->user_id }}">
                                         </div>
@@ -41,13 +41,13 @@
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Phone Number <span class="login-danger">*</span></label>
+                                            <label>Num Téléphone <span class="login-danger">*</span></label>
                                             <input type="text" class="form-control" name="phone_number" value="{{ $users->phone_number }}">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Status <span class="login-danger">*</span></label>
+                                            <label>Statut <span class="login-danger">*</span></label>
                                             <select class="form-control select" name="status">
                                                 <option disabled>Select Status</option>
                                                 <option value="Active" {{ $users->status == 'Active' ? 'selected' : '' }}>Active</option>
@@ -58,21 +58,19 @@
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Role Name <span class="login-danger">*</span></label>
+                                            <label>Role <span class="login-danger">*</span></label>
                                             <select class="form-control select" name="role_name">
-                                                <option disabled>Select Role Name</option>
-                                                <option value="Admin" {{ $users->role_name == 'Admin' ? 'selected' : '' }}>Admin</option>
-                                                <option value="Super Admin" {{ $users->role_name == 'Super Admin' ? 'selected' : '' }}>Super Admin</option>
-                                                <option value="Normal User" {{ $users->role_name == 'Normal User' ? 'selected' : '' }}>Normal User</option>
-                                                <option value="Teachers" {{ $users->role_name == 'Teachers' ? 'selected' : '' }}>Teachers</option>
-                                                <option value="Student" {{ $users->role_name == 'Student' ? 'selected' : '' }}>Student</option>
+                                                <option disabled>Choisir Role</option>
+                                                <option value="Directeur" {{ $users->role_name == 'Directeur' ? 'selected' : '' }}>Directeur</option>
+                                                <option value="RH" {{ $users->role_name == 'RH' ? 'selected' : '' }}>RH</option>
+                                                <option value="Formateur" {{ $users->role_name == 'Formateur' ? 'selected' : '' }}>Formateur</option>
                                             </select>
                                         </div>
                                     </div>
                                     
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Profile <span class="login-danger">*</span></label>
+                                            <label>Profil <span class="login-danger">*</span></label>
                                             <input type="file" class="form-control" name="avatar" value="{{ $users->avatar }}">
                                             <div class="user-img" style="margin-top: -25px;">
                                                 <img class="rounded-circle" src="{{ URL::to('/images/'. $users->avatar) }}">
@@ -83,25 +81,25 @@
 
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Position <span class="login-danger">*</span></label>
+                                            <label>Formation <span class="login-danger">*</span></label>
                                             <input type="text" class="form-control" name="position" value="{{ $users->position }}">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Department <span class="login-danger">*</span></label>
+                                            <label>Batiment <span class="login-danger">*</span></label>
                                             <input type="text" class="form-control" name="department" value="{{ $users->department }}">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Updated Date <span class="login-danger">*</span></label>
+                                            <label>Date Mise a Jours <span class="login-danger">*</span></label>
                                             <input type="text" class="form-control" name="updated_at" value="{{ $users->updated_at }}" readonly>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="student-submit">
-                                            <button type="submit" class="btn btn-primary">Update</button>
+                                            <button type="submit" class="btn btn-primary">Confirmer</button>
                                         </div>
                                     </div>
                                 </div>
