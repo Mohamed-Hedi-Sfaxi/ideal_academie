@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Prenom <span class="login-danger">*</span></label>
+                                            <label>Prénom <span class="login-danger">*</span></label>
                                             <input type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" placeholder="Entrer le prenom" value="{{ old('last_name') }}">
                                             @error('last_name')
                                                 <span class="invalid-feedback" role="alert">
@@ -69,18 +69,18 @@
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
                                             <label>CIN </label>
-                                            <input class="form-control type="text" name="roll" placeholder="Entrer Numéro CIN" value="{{ old('roll') }}">
+                                            <input class="form-control type="text" name="cin" placeholder="Entrer Numéro CIN" value="{{ old('cin') }}">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
                                             <label>Paiement Tranche 2 <span class="login-danger">*</span></label>
-                                            <select class="form-control select @error('religion') is-invalid @enderror" name="religion">
+                                            <select class="form-control select @error('payment') is-invalid @enderror" name="payment">
                                                 <option selected disabled>Selectionner Paiement </option>
-                                                <option value="Oui" {{ old('religion') == 'Oui' ? "selected" :""}}>Oui</option>
-                                                <option value="Non" {{ old('religion') == 'Non' ? "selected" :""}}>Non</option>
+                                                <option value="Oui" {{ old('payment') == 'Oui' ? "selected" :""}}>Oui</option>
+                                                <option value="Non" {{ old('payment') == 'Non' ? "selected" :""}}>Non</option>
                                             </select>
-                                            @error('religion')
+                                            @error('payment')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -101,13 +101,13 @@
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
                                             <label>Groupe <span class="login-danger">*</span></label>
-                                            <select class="form-control select @error('class') is-invalid @enderror" name="class">
+                                            <select class="form-control select @error('groupe') is-invalid @enderror" name="groupe">
                                                 <option selected disabled>Selectionner le groupe </option>
-                                                <option value="G1" {{ old('class') == 'G1' ? "selected" :""}}>G1</option>
-                                                <option value="G2" {{ old('class') == 'G2' ? "selected" :""}}>G2</option>
-                                                <option value="G3" {{ old('class') == 'G3' ? "selected" :""}}>G3</option>
+                                                <option value="G1" {{ old('groupe') == 'G1' ? "selected" :""}}>G1</option>
+                                                <option value="G2" {{ old('groupe') == 'G2' ? "selected" :""}}>G2</option>
+                                                <option value="G3" {{ old('groupe') == 'G3' ? "selected" :""}}>G3</option>
                                             </select>
-                                            @error('class')
+                                            @error('groupe')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -117,18 +117,18 @@
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
                                             <label>Formation <span class="login-danger">*</span></label>
-                                            <select class="form-control select @error('section') is-invalid @enderror" name="section">
+                                            <select class="form-control select @error('formation') is-invalid @enderror" name="formation">
                                                 <option selected disabled>Selectionner la formation </option>
-                                                <option value="Diagnostic mécanique auto et moto" {{ old('section') == 'Diagnostic mécanique auto et moto' ? "selected" :""}}>Diagnostic mécanique auto et moto</option>
-                                                <option value="Réparation et programmation de calculateur auto" {{ old('section') == 'Réparation et programmation de calculateur auto' ? "selected" :""}}>Réparation et programmation de calculateur auto </option>
-                                                <option value="Carrosserie, tôlerie et peinture" {{ old('section') == 'Carrosserie, tôlerie et peinture' ? "selected" :""}}>Carrosserie, tôlerie et peinture</option>
-                                                <option value="Mécanique poids lourds" {{ old('section') == 'Mécanique poids lourds' ? "selected" :""}}>Mécanique poids lourds</option>
-                                                <option value="Technique de soudage" {{ old('section') == 'Technique de soudage' ? "selected" :""}}>Technique de soudage</option>
-                                                <option value="Plomberie chaud et froid" {{ old('section') == 'Plomberie chaud et froid' ? "selected" :""}}>Plomberie chaud et froid</option>
-                                                <option value="Electricité industriel et bâtiment" {{ old('section') == 'Electricité industriel et bâtiment' ? "selected" :""}}>Electricité industriel et bâtiment</option>
-                                                <option value="Camera de surveillance" {{ old('section') == 'Camera de surveillance' ? "selected" :""}}>Camera de surveillance</option>
+                                                <option value="Diagnostic mécanique auto et moto" {{ old('formation') == 'Diagnostic mécanique auto et moto' ? "selected" :""}}>Diagnostic mécanique auto et moto</option>
+                                                <option value="Réparation et programmation de calculateur auto" {{ old('formation') == 'Réparation et programmation de calculateur auto' ? "selected" :""}}>Réparation et programmation de calculateur auto </option>
+                                                <option value="Carrosserie, tôlerie et peinture" {{ old('formation') == 'Carrosserie, tôlerie et peinture' ? "selected" :""}}>Carrosserie, tôlerie et peinture</option>
+                                                <option value="Mécanique poids lourds" {{ old('formation') == 'Mécanique poids lourds' ? "selected" :""}}>Mécanique poids lourds</option>
+                                                <option value="Technique de soudage" {{ old('formation') == 'Technique de soudage' ? "selected" :""}}>Technique de soudage</option>
+                                                <option value="Plomberie chaud et froid" {{ old('formation') == 'Plomberie chaud et froid' ? "selected" :""}}>Plomberie chaud et froid</option>
+                                                <option value="Electricité industriel et bâtiment" {{ old('formation') == 'Electricité industriel et bâtiment' ? "selected" :""}}>Electricité industriel et bâtiment</option>
+                                                <option value="Camera de surveillance" {{ old('formation') == 'Camera de surveillance' ? "selected" :""}}>Camera de surveillance</option>
                                             </select>
-                                            @error('section')
+                                            @error('formation')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -137,28 +137,13 @@
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Telephone </label>
+                                            <label>Téléphone </label>
                                             <input class="form-control @error('phone_number') is-invalid @enderror" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" name="phone_number" placeholder="Entrer num telephone" value="{{ old('phone_number') }}">
                                             @error('phone_number')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group students-up-files">
-                                            <label>Upload Student Photo (150px X 150px)</label>
-                                            <div class="uplod">
-                                                <label class="file-upload image-upbtn mb-0 @error('upload') is-invalid @enderror">
-                                                    Choose File <input type="file" name="upload">
-                                                </label>
-                                                @error('upload')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-12">

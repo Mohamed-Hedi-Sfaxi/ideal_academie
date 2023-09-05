@@ -16,6 +16,13 @@
                         </ul>
                     </div>
                 </div>
+                <div class="d-flex">
+                    <div class="card bg-comman w-100">
+                        <div class="card-body">
+                            <img src="images/dashboard.jpg" alt="Avatar" style="width:100%">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

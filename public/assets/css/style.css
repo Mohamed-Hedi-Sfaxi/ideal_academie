@@ -270,6 +270,10 @@ table.table td h2 span {
     border-color: rgba(0, 0, 0, .05)
 }
 
+img {
+    border-radius: 8px;
+}
+
 .card-table .card-body .table>thead>tr>th {
     border-top: 0
 }

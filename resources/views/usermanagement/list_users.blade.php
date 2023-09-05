@@ -26,23 +26,20 @@
                                     <h3 class="page-title">Liste D'utilisateurs</h3>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
-                                    <a href="add-time-table.html" class="btn btn-primary">
-                                        <i class="fas fa-plus"></i>
-                                    </a>
+                                    <a href="{{ route('user/add') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="table-responsive">
                             <table
-                                class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
+                                class="table border-0 star-student table-hover table-center mb-0 table-striped">
                                 <thead class="student-thread">
                                     <tr>
                                         <th>ID</th>
-                                        <th>Profil</th>
                                         <th>Nom</th>
                                         <th>Email</th>
-                                        <th>Num Téléphone</th>
+                                        <th>Téléphone</th>
                                         <th>Date D'adhésion</th>
                                         <th>Rôle</th>
                                         <th>Statut</th>
@@ -50,17 +47,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $key=>$list )
+                                    @foreach ($users as $key=>$list)
                                     <tr>
                                         <td class="user_id">{{ $list->user_id }}</td>
                                         <td hidden class="avatar">{{ $list->avatar }}</td>
-                                        <td>
-                                            <h2 class="table-avatar">
-                                                <a class="avatar avatar-sm me-2">
-                                                    <img class="avatar-img rounded-circle"src="/images/{{ $list->avatar }}"alt="{{ $list->name }}">
-                                                </a>
-                                            </h2>
-                                        </td>
                                         <td>{{ $list->name }}</td>
                                         <td>{{ $list->email }}</td>
                                         <td>{{ $list->phone_number }}</td>
@@ -70,11 +60,8 @@
                                             <div class="edit-delete-btn">
                                                 @if ($list->status === 'Active')
                                                 <a class="text-success">{{ $list->status }}</a>
-                                                @elseif ($list->status === 'Inactive')
-                                                <a class="text-warning">{{ $list->status }}</a>
-                                                @elseif ($list->status === 'Disable')
-                                                <a class="text-danger" >{{ $list->status }}</a>
-                                                @else 
+                                                @elseif ($list->status === 'Désactivé')
+                                                <a class="text-warning">{{ $list->status }}</a> 
                                                 @endif
                                             </div>
                                         </td>

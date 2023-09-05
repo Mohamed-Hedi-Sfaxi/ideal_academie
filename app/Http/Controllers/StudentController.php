@@ -6,6 +6,7 @@ use DB;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
+use Session;
 
 class StudentController extends Controller
 {
@@ -16,68 +17,56 @@ class StudentController extends Controller
         return view('student.student',compact('studentList'));
     }
 
-    /** index page student grid */
-    public function studentGrid()
-    {
-        $studentList = Student::all();
-        return view('student.student-grid',compact('studentList'));
-    }
-
     /** student add page */
     public function studentAdd()
     {
         return view('student.add-student');
     }
     
-    /** student save record */
+    /** student save */
     public function studentSave(Request $request)
     {
         $request->validate([
             'first_name'    => 'required|string',
             'last_name'     => 'required|string',
             'date_of_birth' => 'required|string',
-            'roll'          => 'required|string',
-            'religion'      => 'required|string',
+            'cin'          => 'required|string',
+            'payment'      => 'required|string',
             'email'         => 'required|email',
-            'class'         => 'required|string',
-            'section'       => 'required|string',
+            'groupe'         => 'required|string',
+            'formation'       => 'required|string',
             'phone_number'  => 'required',
-            'upload'        => 'required|image',
         ]);
         
         DB::beginTransaction();
         try {
            
-            $upload_file = rand() . '.' . $request->upload->extension();
-            $request->upload->move(storage_path('app/public/student-photos/'), $upload_file);
-            if(!empty($request->upload)) {
-                $student = new Student;
-                $student->first_name   = $request->first_name;
-                $student->last_name    = $request->last_name;
-                $student->date_of_birth= $request->date_of_birth;
-                $student->roll         = $request->roll;
-                $student->religion     = $request->religion;
-                $student->email        = $request->email;
-                $student->class        = $request->class;
-                $student->section      = $request->section;
-                $student->phone_number = $request->phone_number;
-                $student->upload = $upload_file;
-                $student->save();
+            $student = new Student;
+            $student->first_name   = $request->first_name;
+            $student->last_name    = $request->last_name;
+            $student->date_of_birth= $request->date_of_birth;
+            $student->cin         = $request->cin;
+            $student->payment     = $request->payment;
+            $student->email        = $request->email;
+            $student->groupe        = $request->groupe;
+            $student->formation      = $request->formation;
+            $student->phone_number = $request->phone_number;
+            $student->save();
 
-                Toastr::success('Has been add successfully :)','Success');
-                DB::commit();
-            }
+            Toastr::success('Ajout avec succès :)','Succés');
+            DB::commit();
+
 
             return redirect()->back();
            
         } catch(\Exception $e) {
             DB::rollback();
-            Toastr::error('fail, Add new student  :)','Error');
+            Toastr::error('Échec ajout  :(','Échec');
             return redirect()->back();
         }
     }
 
-    /** view for edit student */
+    /** student update */
     public function studentEdit($id)
     {
         $studentEdit = Student::where('id',$id)->first();
@@ -90,26 +79,38 @@ class StudentController extends Controller
         DB::beginTransaction();
         try {
 
-            if (!empty($request->upload)) {
-                unlink(storage_path('app/public/student-photos/'.$request->image_hidden));
-                $upload_file = rand() . '.' . $request->upload->extension();
-                $request->upload->move(storage_path('app/public/student-photos/'), $upload_file);
-            } else {
-                $upload_file = $request->image_hidden;
-            }
-           
-            $updateRecord = [
-                'upload' => $upload_file,
-            ];
-            Student::where('id',$request->id)->update($updateRecord);
+                $first_name     = $request->first_name;
+                $last_name      = $request->last_name;
+                $date_of_birth  = $request->date_of_birth;
+                $cin            = $request->cin;
+                $payment        = $request->payment;
+                $email          = $request->email;
+                $groupe         = $request->groupe;
+                $formation      = $request->formation;
+                $phone_number   = $request->phone_number;
+
             
-            Toastr::success('Has been update successfully :)','Success');
-            DB::commit();
-            return redirect()->back();
-           
-        } catch(\Exception $e) {
+                $update = [
+                    'first_name'      => $first_name,
+                    'last_name'       => $last_name,
+                    'date_of_birth'   => $date_of_birth,
+                    'cin'             => $cin,
+                    'payment'         => $payment,
+                    'email'           => $email,
+                    'groupe'          => $groupe,
+                    'formation'       => $formation,
+                    'phone_number'    => $phone_number,
+                ];
+
+                Student::where('id',$request->id)->update($update);
+            
+                DB::commit();
+                Toastr::success('Mise à jour avec succès :)','Succès');
+                return redirect()->back();
+
+        } catch(\Exception $e){
             DB::rollback();
-            Toastr::error('fail, update student  :)','Error');
+            Toastr::error('Échec de la mise à jour :(','Échec');
             return redirect()->back();
         }
     }
@@ -119,26 +120,21 @@ class StudentController extends Controller
     {
         DB::beginTransaction();
         try {
-           
-            if (!empty($request->id)) {
-                Student::destroy($request->id);
-                unlink(storage_path('app/public/student-photos/'.$request->avatar));
-                DB::commit();
-                Toastr::success('Student deleted successfully :)','Success');
-                return redirect()->back();
+            if (Session::get('role_name') === 'RH')
+            {
+                    Student::destroy($request->id);
+            } else {
+                Toastr::error('Échec de la suppression :(','Échec');
             }
+
+            DB::commit();
+            Toastr::success('Supprimé avec succès :)','Succès');
+            return redirect()->back();
     
         } catch(\Exception $e) {
             DB::rollback();
-            Toastr::error('Student deleted fail :)','Error');
+            Toastr::error('Échec de la suppression :(','Échec');
             return redirect()->back();
         }
-    }
-
-    /** student profile page */
-    public function studentProfile($id)
-    {
-        $studentProfile = Student::where('id',$id)->first();
-        return view('student.student-profile',compact('studentProfile'));
     }
 }

@@ -41,18 +41,17 @@
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Num Téléphone <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" name="phone_number" value="{{ $users->phone_number }}">
+                                            <label>Téléphone <span class="login-danger">*</span></label>
+                                            <input type="text" class="form-control" name="phone_number" value="{{ $users->phone }}">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
                                             <label>Statut <span class="login-danger">*</span></label>
                                             <select class="form-control select" name="status">
-                                                <option disabled>Select Status</option>
+                                                <option disabled>Choisir Statut</option>
                                                 <option value="Active" {{ $users->status == 'Active' ? 'selected' : '' }}>Active</option>
-                                                <option value="Disable" {{ $users->status == 'Disable' ? 'selected' : '' }}>Disable</option>
-                                                <option value="Inactive" {{ $users->status == 'Inactive' ? 'selected' : '' }}>Inactive</option>
+                                                <option value="Disactivé" {{ $users->status == 'Disactivé' ? 'selected' : '' }}>Disactivé</option>
                                             </select>
                                         </div>
                                     </div>
@@ -61,34 +60,8 @@
                                             <label>Role <span class="login-danger">*</span></label>
                                             <select class="form-control select" name="role_name">
                                                 <option disabled>Choisir Role</option>
-                                                <option value="Directeur" {{ $users->role_name == 'Directeur' ? 'selected' : '' }}>Directeur</option>
                                                 <option value="RH" {{ $users->role_name == 'RH' ? 'selected' : '' }}>RH</option>
-                                                <option value="Formateur" {{ $users->role_name == 'Formateur' ? 'selected' : '' }}>Formateur</option>
                                             </select>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label>Profil <span class="login-danger">*</span></label>
-                                            <input type="file" class="form-control" name="avatar" value="{{ $users->avatar }}">
-                                            <div class="user-img" style="margin-top: -25px;">
-                                                <img class="rounded-circle" src="{{ URL::to('/images/'. $users->avatar) }}">
-                                            </div>
-                                        </div>
-                                        <input type="hidden" name="hidden_avatar" value="{{ $users->avatar }}">
-                                    </div>
-
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label>Formation <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" name="position" value="{{ $users->position }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label>Batiment <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" name="department" value="{{ $users->department }}">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">
@@ -99,7 +72,7 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="student-submit">
-                                            <button type="submit" class="btn btn-primary">Confirmer</button>
+                                            <button type="submit" class="btn btn-primary">Mettre à jour</button>
                                         </div>
                                     </div>
                                 </div>

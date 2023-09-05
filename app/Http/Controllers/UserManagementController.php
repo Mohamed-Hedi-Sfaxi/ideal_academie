@@ -31,62 +31,93 @@ class UserManagementController extends Controller
         return view('usermanagement.user_update',compact('users'));
     }
 
+    /** user add page */
+    public function userAdd()
+    {
+        return view('usermanagement.user_add');
+    }
+
+    /** user Save */
+    public function userSave(Request $request)
+    {
+        $request->validate([
+            'full_name'       => 'required|string',
+            'joining_date'    => 'required|string',
+            'email'           => 'required|string',
+            'mobile'          => 'required|string',
+            'password'        => 'required|string|min:8|confirmed',
+            'password_confirmation' => 'required',
+        ]);
+
+        try {
+        
+            $dt        = Carbon::now();
+            $todayDate = $dt->toDayDateTimeString();
+            
+                
+            User::create([
+                'name'          => $request->full_name,
+                'email'         => $request->email,
+                'join_date'     => $todayDate,
+                'phone_number'  => $request->mobile,
+                'status'        => $request->status,
+                'role_name'     => 'RH',
+                'password'      => Hash::make($request->password),
+            ]);
+            $user_id = DB::table('users')->select('user_id')->orderBy('id','DESC')->first();
+            
+            $userSave = new User;
+            $userSave->user_id       = $user_id->user_id;
+            $userSave->full_name     = $request->full_name;
+            $userSave->joining_date  = $request->joining_date;
+            $userSave->status        = $request->status;
+            $userSave->role_name     = 'RH';
+            $userSave->save();
+
+            Toastr::success('Ajout avec succès :)','Succés');
+            return redirect()->back();
+        } catch(\Exception $e) {
+            \Log::info($e);
+            DB::rollback();
+            Toastr::success('Ajout avec succès :)','Succés');
+            return redirect()->back();
+        }
+    }
+
     /** user Update */
     public function userUpdate(Request $request)
     {
         DB::beginTransaction();
         try {
-            if (Session::get('role_name') === 'RH' || Session::get('role_name') === 'Directeur')
+            if (Session::get('role_name') === 'Directeur')
             {
                 $user_id       = $request->user_id;
                 $name         = $request->name;
                 $email        = $request->email;
-                $role_name    = $request->role_name;
-                $position     = $request->position;
                 $phone        = $request->phone_number;
-                $department   = $request->department;
                 $status       = $request->status;
 
-                $image_name = $request->hidden_avatar;
-                $image = $request->file('avatar');
-
-                if($image_name =='photo_defaults.jpg') {
-                    if ($image != '') {
-                        $image_name = rand() . '.' . $image->getClientOriginalExtension();
-                        $image->move(public_path('/images/'), $image_name);
-                    }
-                } else {
-                    
-                    if($image != '') {
-                        unlink('images/'.$image_name);
-                        $image_name = rand() . '.' . $image->getClientOriginalExtension();
-                        $image->move(public_path('/images/'), $image_name);
-                    }
-                }
             
                 $update = [
                     'user_id'      => $user_id,
                     'name'         => $name,
-                    'role_name'    => $role_name,
+                    'role_name'    => 'RH',
                     'email'        => $email,
-                    'position'     => $position,
                     'phone_number' => $phone,
-                    'department'   => $department,
                     'status'       => $status,
-                    'avatar'       => $image_name,
                 ];
 
                 User::where('user_id',$request->user_id)->update($update);
             } else {
-                Toastr::error('User update fail :)','Error');
+                Toastr::error('Échec de la mise à jour :(','Échec');
             }
             DB::commit();
-            Toastr::success('User updated successfully :)','Success');
+            Toastr::success('Mise à jour avec succès :)','Succès');
             return redirect()->back();
 
         } catch(\Exception $e){
             DB::rollback();
-            Toastr::error('User update fail :)','Error');
+            Toastr::error('Échec de la mise à jour :(','Échec');
             return redirect()->back();
         }
     }
@@ -98,24 +129,18 @@ class UserManagementController extends Controller
         try {
             if (Session::get('role_name') === 'Directeur')
             {
-                if ($request->avatar =='photo_defaults.jpg')
-                {
                     User::destroy($request->user_id);
-                } else {
-                    User::destroy($request->user_id);
-                    unlink('images/'.$request->avatar);
-                }
             } else {
-                Toastr::error('User deleted fail :)','Error');
+                Toastr::error('Échec de la suppression :(','Échec');
             }
 
             DB::commit();
-            Toastr::success('User deleted successfully :)','Success');
+            Toastr::success('Supprimé avec succès :)','Succès');
             return redirect()->back();
     
         } catch(\Exception $e) {
             DB::rollback();
-            Toastr::error('User deleted fail :)','Error');
+            Toastr::error('Échec de la suppression :(','Échec');
             return redirect()->back();
         }
     }
@@ -131,7 +156,7 @@ class UserManagementController extends Controller
 
         User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
         DB::commit();
-        Toastr::success('User change successfully :)','Success');
+        Toastr::success('Changement de mot de passe réussi :)','Succès');
         return redirect()->intended('home');
     }
 }

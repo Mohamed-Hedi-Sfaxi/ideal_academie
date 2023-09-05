@@ -48,7 +48,7 @@
 
                     <div class="tab-pane fade show active" id="per_details_tab">
                         <div class="row">
-                            <div class="col-lg-9">
+                            <div class="col-lg">
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title d-flex justify-content-between">
@@ -83,18 +83,6 @@
                                                 Mahdia - 5100,<br>
                                                 Tunisie.</p>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title d-flex justify-content-between">
-                                            <span>Etat Du Compte</span>
-                                            <a class="edit-link" href="#"><i class="far fa-edit me-1"></i>Edit</a>
-                                        </h5>
-                                        <button class="btn btn-success" type="button"><i class="fe fe-check-verified"></i> Active</button>
                                     </div>
                                 </div>
                             </div>

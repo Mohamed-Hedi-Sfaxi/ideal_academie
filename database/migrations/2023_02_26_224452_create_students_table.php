@@ -18,13 +18,12 @@ return new class extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('date_of_birth')->nullable();
-            $table->string('roll')->nullable();
-            $table->string('religion')->nullable();
+            $table->string('cin')->nullable();
+            $table->string('payment')->nullable();
             $table->string('email')->nullable();
-            $table->string('class')->nullable();
-            $table->string('section')->nullable();
+            $table->string('groupe')->nullable();
+            $table->string('formation')->nullable();
             $table->string('phone_number')->nullable();
-            $table->string('upload')->nullable();
             $table->timestamps();
         });
     }

@@ -20,9 +20,6 @@
                 <input type="password" class="form-control pass-input @error('password') is-invalid @enderror" name="password">
                 <span class="profile-views feather-eye toggle-password"></span>
             </div>
-            {{-- <div class="forgotpass">
-                <a href="forgot-password.html">Forgot Password?</a>
-            </div> --}}
             <div class="form-group">
                 <button class="btn btn-primary btn-block" type="submit">connexion</button>
             </div>

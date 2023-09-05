@@ -5,29 +5,29 @@
                 <li class="menu-title">
                     <span>Menu Principal</span>
                 </li>
+                @if (Session::get('role_name') === 'Directeur')
                 <li class="{{set_active(['setting/page'])}}">
                     <a href="{{ route('setting/page') }}">
                         <i class="fas fa-cog"></i> 
                         <span> Paramétres</span>
                     </a>
                 </li>
-                <li class="submenu {{set_active(['home'])}}">
-                    <a href="#"><i class="feather-grid"></i>
-                        <span>Tableau De Bord</span> 
-                        <span class="menu-arrow"></span>
+                @endif
+                <li class="{{set_active(['home'])}}">
+                    <a href="{{ route('home') }}">
+                        <i class="feather-grid"></i> 
+                        <span> Tableau De Bord</span>
                     </a>
-                    <ul>
-                        <li><a href="{{ route('home') }}" class="{{set_active(['home'])}}">Tableau de bord</a></li>
-                    </ul>
                 </li>
-                @if (Session::get('role_name') === 'RH' || Session::get('role_name') === 'Directeur')
-                <li class="submenu {{set_active(['list/users'])}} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">
+                @if (Session::get('role_name') === 'Directeur')
+                <li class="submenu {{set_active(['user/list','user/add'])}} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">
                     <a href="#"><i class="fas fa-shield-alt"></i>
-                        <span>Gestion Des Utilisateurs</span>
+                        <span>Utilisateurs</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
-                        <li><a href="{{ route('list/users') }}" class="{{set_active(['list/users'])}} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">Liste des Utilisateurs</a></li>
+                        <li><a href="{{ route('user/list') }}" class="{{set_active(['user/list'])}} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">Liste des Utilisateurs</a></li>
+                        <li><a href="{{ route('user/add') }}" class="{{set_active(['user/add'])}}">Ajouter des Utilisateurs</a></li>
                     </ul>
                 </li>
                 @endif
@@ -39,7 +39,9 @@
                     </a>
                     <ul>
                         <li><a href="{{ route('student/list') }}"  class="{{set_active(['student/list','student/grid'])}}">Liste des Etudiants</a></li>
+                        @if (Session::get('role_name') === 'RH')
                         <li><a href="{{ route('student/add/page') }}" class="{{set_active(['student/add/page'])}}">Ajouter Etudiants</a></li>
+                        @endif
                     </ul>
                 </li>
 
@@ -50,7 +52,9 @@
                     </a>
                     <ul>
                         <li><a href="{{ route('teacher/list/page') }}" class="{{set_active(['teacher/list/page','teacher/grid/page'])}}">Liste des Formateurs</a></li>
+                        @if (Session::get('role_name') === 'RH')
                         <li><a href="{{ route('teacher/add/page') }}" class="{{set_active(['teacher/add/page'])}}">Ajouter Formateurs</a></li>
+                        @endif
                     </ul>
                 </li>
                 

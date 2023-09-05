@@ -11,17 +11,14 @@ class Teacher extends Model
     protected $fillable = [
         'teacher_id',
         'full_name',
-        'gender',
         'date_of_birth',
         'mobile',
         'joining_date',
-        'qualification',
-        'experience',
+        'formation',
         'username',
         'address',
         'city',
         'state',
         'zip_code',
-        'country',
     ];
 }
