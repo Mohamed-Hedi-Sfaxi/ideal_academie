@@ -7,10 +7,10 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-sub-header">
-                            <h3 class="page-title">Liste Des Etudiants</h3>
+                            <h3 class="page-title">Liste Des Batiments</h3>
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('student/list') }}">Etudiant</a></li>
-                                <li class="breadcrumb-item active">Tous Les Etudiants</li>
+                                <li class="breadcrumb-item"><a href="{{ route('batiment/list') }}">Batiments</a></li>
+                                <li class="breadcrumb-item active">Tous Les Batiments</li>
                             </ul>
                         </div>
                     </div>
@@ -25,11 +25,11 @@
                             <div class="page-header">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h3 class="page-title">Etudiants</h3>
+                                        <h3 class="page-title">Batiments</h3>
                                     </div>
                                     <div class="col-auto text-end float-end ms-auto download-grp">
-                                        @if (Session::get('role_name') === 'RH')
-                                        <a href="{{ route('student/add/page') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                                        @if (Session::get('role_name') === 'Directeur')
+                                        <a href="{{ route('batiment/add/page') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                                         @endif
                                     </div>
                                 </div>
@@ -37,37 +37,29 @@
 
                             <div class="table-responsive">
                                 <table
-                                    class="table border-0 star-student table-hover table-center mb-0 table-striped">
-                                    <thead class="student-thread">
+                                    class="table border-0 star-batiment table-hover table-center mb-0 table-striped">
+                                    <thead class="batiment-thread">
                                         <tr>
-                                            <th>CIN</th>
-                                            <th>Nom & Prénom</th>
-                                            <th>Groupe</th>
-                                            <th>Date de Naissance</th>
-                                            <th>Num Téléphone</th>
-                                            <th>Formation</th>
-                                            <th>Paiement</th>
+                                            <th>État/Province</th>
+                                            <th>Ville</th>
+                                            <th>Adresse</th>
                                             <th class="text-end">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($studentList as $key=>$list )
+                                        @foreach ($batimentList as $key=>$list )
                                         <tr>
-                                            <td>{{ $list->cin }}</td>
                                             <td hidden class="id">{{ $list->id }}</td>
                                             <td hidden class="avatar">{{ $list->upload }}</td>
-                                            <td>{{ $list->first_name }} {{ $list->last_name }}</td>
-                                            <td>{{ $list->groupe }}</td>
-                                            <td>{{ $list->date_of_birth }}</td>
-                                            <td>{{ $list->phone_number }}</td>
-                                            <td>{{ $list->formation }}</td>
-                                            <td>{{ $list->payment }}</td>
+                                            <td>{{ $list->state }}</td>
+                                            <td>{{ $list->city }}</td>
+                                            <td>{{ $list->address }}</td>
                                             <td class="text-end">
                                                 <div class="actions">
-                                                    <a href="{{ url('student/edit/'.$list->id) }}" class="btn btn-sm bg-danger-light">
+                                                    <a href="{{ url('batiment/edit/'.$list->id) }}" class="btn btn-sm bg-danger-light">
                                                         <i class="feather-edit"></i>
                                                     </a>
-                                                    <a class="btn btn-sm bg-danger-light student_delete" data-bs-toggle="modal" data-bs-target="#studentUser">
+                                                    <a class="btn btn-sm bg-danger-light batiment_delete" data-bs-toggle="modal" data-bs-target="#batimentUser">
                                                         <i class="feather-trash-2 me-1"></i>
                                                     </a>
                                                 </div>
@@ -83,8 +75,8 @@
             </div>
         </div>
     </div>
-    {{-- model student delete --}}
-    <div class="modal fade contentmodal" id="studentUser" tabindex="-1" aria-hidden="true">
+    {{-- model batiment delete --}}
+    <div class="modal fade contentmodal" id="batimentUser" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content doctor-profile">
                 <div class="modal-header pb-0 border-bottom-0  justify-content-end">
@@ -93,7 +85,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('student/delete') }}" method="POST">
+                    <form action="{{ route('batiment/delete') }}" method="POST">
                         @csrf
                         <div class="delete-wrap text-center">
                             <div class="del-icon">
@@ -116,7 +108,7 @@
 
     {{-- delete js --}}
     <script>
-        $(document).on('click','.student_delete',function()
+        $(document).on('click','.batiment_delete',function()
         {
             var _this = $(this).parents('tr');
             $('.e_id').val(_this.find('.id').text());

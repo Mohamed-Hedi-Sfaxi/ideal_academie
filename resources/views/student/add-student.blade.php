@@ -10,7 +10,7 @@
                         <div class="page-sub-header">
                             <h3 class="page-title">Ajouter Etudiants</h3>
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('student/add/page') }}">Etudiant</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('student/list') }}">Etudiant</a></li>
                                 <li class="breadcrumb-item active">Ajouter Etudiants</li>
                             </ul>
                         </div>
@@ -68,8 +68,13 @@
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>CIN </label>
-                                            <input class="form-control type="text" name="cin" placeholder="Entrer Numéro CIN" value="{{ old('cin') }}">
+                                            <label>CIN <span class="login-danger">*</span></label>
+                                            <input type="text" class="form-control @error('cin') is-invalid @enderror" name="cin" placeholder="Entrer Numéro CIN" value="{{ old('cin') }}">
+                                            @error('cin')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">
@@ -90,7 +95,7 @@
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
                                             <label>E-Mail <span class="login-danger">*</span></label>
-                                            <input class="form-control @error('email') is-invalid @enderror" type="text" name="email" placeholder="Entrer l'email" value="{{ old('email') }}">
+                                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Entrer l'email" value="{{ old('email') }}">
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

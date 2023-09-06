@@ -10,7 +10,7 @@
                 <div class="col">
                     <h3 class="page-title">Liste Des Formateurs</h3>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('teacher/add/page') }}">Formateurs</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('teacher/list/page') }}">Formateurs</a></li>
                         <li class="breadcrumb-item active">Tous Les Formateurs</li>
                     </ul>
                 </div>
@@ -26,7 +26,9 @@
                                     <h3 class="page-title">Formateurs</h3>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
+                                    @if (Session::get('role_name') === 'RH')
                                     <a href="{{ route('teacher/add/page') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                                    @endif
                                 </div>
                             </div>
                         </div>

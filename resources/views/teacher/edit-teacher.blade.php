@@ -167,7 +167,7 @@
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
-                                        <label>Etat <span class="login-danger">*</span></label>
+                                        <label>Région <span class="login-danger">*</span></label>
                                         <input type="text" class="form-control @error('state') is-invalid @enderror" name="state" placeholder="Enter State" value="{{ $teacher->state }}">
                                         @error('state')
                                             <span class="invalid-feedback" role="alert">

@@ -11,7 +11,7 @@ use App\Http\Controllers\TypeFormController;
 use App\Http\Controllers\Setting;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
-use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\batimentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -108,8 +108,13 @@ Route::controller(TeacherController::class)->group(function () {
     Route::post('teacher/delete', 'teacherDelete')->name('teacher/delete'); // delete record teacher
 });
 
-// ----------------------- department -----------------------------//
-Route::controller(DepartmentController::class)->group(function () {
-    Route::get('department/add/page', 'indexDepartment')->middleware('auth')->name('department/add/page'); // page add department
-    Route::get('department/edit/page', 'editDepartment')->middleware('auth')->name('department/edit/page'); // page add department
+// ----------------------- batiment -----------------------------//
+Route::controller(batimentController::class)->group(function () {
+    Route::get('batiment/list', 'batiment')->middleware('auth')->name('batiment/list'); // list batiment
+    Route::get('batiment/add/page', 'batimentAdd')->middleware('auth')->name('batiment/add/page'); // page add batiment
+    Route::post('batiment/add/save', 'batimentSave')->name('batiment/add/save'); // save record batiment
+    Route::get('batiment/edit/{id}', 'batimentEdit'); // view for edit
+    Route::post('batiment/update', 'batimentUpdate')->name('batiment/update');
+    Route::post('batiment/delete', 'batimentDelete')->name('batiment/delete'); // delete batiment
+
 });

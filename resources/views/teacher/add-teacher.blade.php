@@ -9,7 +9,7 @@
                 <div class="col">
                     <h3 class="page-title">Ajouter Formateurs</h3>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="teachers.html">Formateurs</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('teacher/list/page') }}">Formateurs</a></li>
                         <li class="breadcrumb-item active">Ajouter Formateurs</li>
                     </ul>
                 </div>
@@ -166,7 +166,7 @@
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
-                                        <label>Etat <span class="login-danger">*</span></label>
+                                        <label>Région <span class="login-danger">*</span></label>
                                         <input type="text" class="form-control @error('state') is-invalid @enderror" name="state" placeholder="Entrer état" value="{{ old('state') }}">
                                         @error('state')
                                             <span class="invalid-feedback" role="alert">

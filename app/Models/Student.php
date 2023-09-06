@@ -12,12 +12,11 @@ class Student extends Model
         'first_name',
         'last_name',
         'date_of_birth',
-        'roll',
-        'religion',
+        'cin',
+        'payment',
         'email',
-        'class',
-        'section',
+        'groupe',
+        'formation',
         'phone_number',
-        'upload',
     ];
 }
