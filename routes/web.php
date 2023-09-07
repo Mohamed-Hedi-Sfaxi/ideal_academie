@@ -11,7 +11,8 @@ use App\Http\Controllers\TypeFormController;
 use App\Http\Controllers\Setting;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
-use App\Http\Controllers\batimentController;
+use App\Http\Controllers\BatimentController;
+use App\Http\Controllers\FormationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,7 @@ function set_active( $route ) {
     return Request::path() == $route ? 'active' : '';
 }
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('auth.login');
 });
 
@@ -109,12 +110,23 @@ Route::controller(TeacherController::class)->group(function () {
 });
 
 // ----------------------- batiment -----------------------------//
-Route::controller(batimentController::class)->group(function () {
+Route::controller(BatimentController::class)->group(function () {
     Route::get('batiment/list', 'batiment')->middleware('auth')->name('batiment/list'); // list batiment
     Route::get('batiment/add/page', 'batimentAdd')->middleware('auth')->name('batiment/add/page'); // page add batiment
     Route::post('batiment/add/save', 'batimentSave')->name('batiment/add/save'); // save record batiment
     Route::get('batiment/edit/{id}', 'batimentEdit'); // view for edit
     Route::post('batiment/update', 'batimentUpdate')->name('batiment/update');
     Route::post('batiment/delete', 'batimentDelete')->name('batiment/delete'); // delete batiment
+
+});
+
+// ----------------------- formation -----------------------------//
+Route::controller(FormationController::class)->group(function () {
+    Route::get('formation/list', 'formation')->middleware('auth')->name('formation/list'); // list batiment
+    Route::get('formation/add/page', 'formationAdd')->middleware('auth')->name('formation/add/page'); // page add batiment
+    Route::post('formation/add/save', 'formationSave')->name('formation/add/save'); // save record batiment
+    Route::get('formation/edit/{id}', 'formationEdit'); // view for edit
+    Route::post('formation/update', 'formationUpdate')->name('formation/update');
+    Route::post('formation/delete', 'formationDelete')->name('formation/delete'); // delete batiment
 
 });

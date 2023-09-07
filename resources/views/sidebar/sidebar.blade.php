@@ -70,19 +70,18 @@
                     </ul>
                 </li>
                 @endif
-                <li class="submenu">
+                @if (Session::get('role_name') === 'Directeur')
+                <li class="submenu {{set_active(['formation/list','formation/add/page', 'formation/edit'])}} {{ (request()->is('formation/edit/*')) ? 'active' : '' }}">
                     <a href="#"><i class="fas fa-book-reader"></i>
                         <span> Formations</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
-                        <li><a href="subjects.html">Liste des Formations</a></li>
-                        @if (Session::get('role_name') === 'Directeur')
-                        <li><a href="add-subject.html">Ajouter Formations</a></li>
-                        <li><a href="edit-subject.html">Modifier Formations</a></li>
-                        @endif
+                        <li><a href="{{ route('formation/list') }}"  class="{{set_active(['formation/list'])}}">Liste des Formations</a></li>
+                        <li><a href="{{ route('formation/add/page') }}" class="{{set_active(['formation/add/page'])}}">Ajouter Formations</a></li>
                     </ul>
                 </li>
+                @endif
             </ul>
         </div>
     </div>
