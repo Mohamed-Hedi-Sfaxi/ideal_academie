@@ -72,20 +72,12 @@
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Statut <span class="login-danger">*</span></label>
-                                            <select class="form-control select" name="status">
-                                                <option disabled>Choisir Statut</option>
-                                                <option value="Active">Active</option>
-                                                <option value="Disctivé">Disactivé</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
                                             <label>Role <span class="login-danger">*</span></label>
                                             <select class="form-control select" name="role_name">
                                                 <option disabled>Choisir Role</option>
+                                                <option value="Directeur">Directeur</option>
                                                 <option value="RH">RH</option>
+                                                <option value="Formateur">Formateur</option>
                                             </select>
                                         </div>
                                     </div>

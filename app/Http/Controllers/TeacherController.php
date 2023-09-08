@@ -33,19 +33,19 @@ class TeacherController extends Controller
     public function saveRecord(Request $request)
     {
         $request->validate([
-            'full_name'      => 'required|string',
-            'date_of_birth'   => 'required|string',
-            'mobile'          => 'required|string',
-            'joining_date'    => 'required|string',
-            'formation'       => 'required|string',
-            'username'        => 'required|string',
-            'email'           => 'required|email',
-            'password'        => 'required|string|min:8|confirmed',
+            'full_name'             => 'required|string',
+            'date_of_birth'         => 'required|string',
+            'mobile'                => 'required|string|max:8',
+            'joining_date'          => 'required|string',
+            'formation'             => 'required|string',
+            'username'              => 'required|string',
+            'email'                 => 'required|email',
+            'password'              => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required',
-            'address'         => 'required|string',
-            'city'            => 'required|string',
-            'state'           => 'required|string',
-            'zip_code'        => 'required|string',
+            'address'               => 'required|string',
+            'city'                  => 'required|string',
+            'state'                 => 'required|string',
+            'zip_code'              => 'required|string',
         ]);
 
         try {
@@ -105,11 +105,11 @@ class TeacherController extends Controller
         try {
 
             $updateRecord = [
-                'full_name'    => $request->full_name,
+                'full_name'     => $request->full_name,
                 'date_of_birth' => $request->date_of_birth,
                 'mobile'        => $request->mobile,
                 'joining_date'  => $request->joining_date,
-                'formation'    => $request->formation,
+                'formation'     => $request->formation,
                 'username'      => $request->username,
                 'address'       => $request->address,
                 'city'          => $request->city,

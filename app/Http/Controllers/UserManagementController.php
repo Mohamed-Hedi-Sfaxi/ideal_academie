@@ -41,11 +41,11 @@ class UserManagementController extends Controller
     public function userSave(Request $request)
     {
         $request->validate([
-            'full_name'       => 'required|string',
-            'joining_date'    => 'required|string',
-            'email'           => 'required|string',
-            'mobile'          => 'required|string',
-            'password'        => 'required|string|min:8|confirmed',
+            'full_name'             => 'required|string',
+            'joining_date'          => 'required|string',
+            'email'                 => 'required|string',
+            'mobile'                => 'required|string|max:8',
+            'password'              => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required',
         ]);
 
@@ -61,7 +61,7 @@ class UserManagementController extends Controller
                 'join_date'     => $todayDate,
                 'phone_number'  => $request->mobile,
                 'status'        => $request->status,
-                'role_name'     => 'RH',
+                'role_name'     => $request->role_name,
                 'password'      => Hash::make($request->password),
             ]);
             $user_id = DB::table('users')->select('user_id')->orderBy('id','DESC')->first();
@@ -70,8 +70,7 @@ class UserManagementController extends Controller
             $userSave->user_id       = $user_id->user_id;
             $userSave->full_name     = $request->full_name;
             $userSave->joining_date  = $request->joining_date;
-            $userSave->status        = $request->status;
-            $userSave->role_name     = 'RH';
+            $userSave->role_name     = $request->role_name;
             $userSave->save();
 
             Toastr::success('Ajout avec succès :)','Succés');
@@ -91,20 +90,19 @@ class UserManagementController extends Controller
         try {
             if (Session::get('role_name') === 'Directeur')
             {
-                $user_id       = $request->user_id;
+                $user_id      = $request->user_id;
                 $name         = $request->name;
                 $email        = $request->email;
+                $role_name    = $request->role_name;
                 $phone        = $request->phone_number;
-                $status       = $request->status;
 
             
                 $update = [
                     'user_id'      => $user_id,
                     'name'         => $name,
-                    'role_name'    => 'RH',
+                    'role_name'    => $role_name,
                     'email'        => $email,
                     'phone_number' => $phone,
-                    'status'       => $status,
                 ];
 
                 User::where('user_id',$request->user_id)->update($update);

@@ -87,17 +87,6 @@
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Définition </label>
-                                            <input class="form-control @error('definition') is-invalid @enderror" type="text" name="definition" value="{{ $formationEdit->definition }}">
-                                            @error('definition')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
                                             <label>Description </label>
                                             <input class="form-control @error('description') is-invalid @enderror" type="text" name="description" value="{{ $formationEdit->description }}">
                                             @error('description')

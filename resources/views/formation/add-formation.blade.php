@@ -86,17 +86,6 @@
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Définition <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control @error('definition') is-invalid @enderror" name="definition" placeholder="Saisir définition" value="{{ old('definition') }}">
-                                            @error('definition')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
                                             <label>Description <span class="login-danger">*</span></label>
                                             <input type="text" class="form-control @error('description') is-invalid @enderror" name="description" placeholder="Saisir description" value="{{ old('description') }}">
                                             @error('description')

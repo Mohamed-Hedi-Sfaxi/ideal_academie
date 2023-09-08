@@ -48,17 +48,14 @@
                                     <div class="card-body">
                                         <h5 class="card-title d-flex justify-content-between">
                                             <span>Détails Personnels</span>
-                                            <a class="edit-link" data-bs-toggle="modal"
-                                                href="#edit_personal_details"><i
-                                                    class="far fa-edit me-1"></i>Modifier</a>
                                         </h5>
                                         <div class="row">
                                             <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Nom</p>
                                             <p class="col-sm-9">{{ Session::get('name') }}</p>
                                         </div>
                                         <div class="row">
-                                            <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Date De Naissance</p>
-                                            <p class="col-sm-9">24 Jul 1983</p>
+                                            <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Date D'adhésion</p>
+                                            <p class="col-sm-9">{{ Session::get('join_date') }}</p>
                                         </div>
                                         <div class="row">
                                             <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Email</p>
@@ -66,17 +63,6 @@
                                                     class="__cf_email__"
                                                     data-cfemail="a1cbcec9cfc5cec4e1c4d9c0ccd1cdc48fc2cecc">{{ Session::get('email') }}</a>
                                             </p>
-                                        </div>
-                                        <div class="row">
-                                            <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Téléphone</p>
-                                            <p class="col-sm-9">{{ Session::get('phone_number') }}</p>
-                                        </div>
-                                        <div class="row">
-                                            <p class="col-sm-3 text-muted text-sm-end mb-0">Adresse</p>
-                                            <p class="col-sm-9 mb-0">Avenue Tahar Sfar,<br>
-                                                Mahdia,<br>
-                                                Mahdia - 5100,<br>
-                                                Tunisie.</p>
                                         </div>
                                     </div>
                                 </div>

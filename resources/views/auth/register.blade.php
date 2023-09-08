@@ -23,9 +23,7 @@
                     <label>Nom De Rôle <span class="login-danger">*</span></label>
                     <select class="form-control select @error('role_name') is-invalid @enderror" name="role_name" id="role_name">
                         <option selected disabled>Type De Rôle</option>
-                        @foreach ($role as $name)
-                            <option value="{{ $name->role_type }}">{{ $name->role_type }}</option>
-                        @endforeach
+                        <option value="Directeur">Directeur</option>
                     </select>
                     @error('role_name')
                     <span class="invalid-feedback" role="alert">

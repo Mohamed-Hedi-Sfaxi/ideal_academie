@@ -15,7 +15,6 @@ class Formation extends Model
         'exam_cost',
         'form_cost',
         'period',
-        'definition',
         'description',
     ];
 }

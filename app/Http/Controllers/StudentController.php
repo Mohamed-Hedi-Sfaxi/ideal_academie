@@ -30,27 +30,27 @@ class StudentController extends Controller
             'first_name'    => 'required|string',
             'last_name'     => 'required|string',
             'date_of_birth' => 'required|string',
-            'cin'          => 'required|string',
-            'payment'      => 'required|string',
+            'cin'           => 'required|string',
+            'payment'       => 'required|string',
             'email'         => 'required|email',
-            'groupe'         => 'required|string',
-            'formation'       => 'required|string',
-            'phone_number'  => 'required',
+            'groupe'        => 'required|string',
+            'formation'     => 'required|string',
+            'phone_number'  => 'required|string|max:8',
         ]);
         
         DB::beginTransaction();
         try {
            
             $student = new Student;
-            $student->first_name   = $request->first_name;
-            $student->last_name    = $request->last_name;
-            $student->date_of_birth= $request->date_of_birth;
-            $student->cin         = $request->cin;
-            $student->payment     = $request->payment;
-            $student->email        = $request->email;
+            $student->first_name    = $request->first_name;
+            $student->last_name     = $request->last_name;
+            $student->date_of_birth = $request->date_of_birth;
+            $student->cin           = $request->cin;
+            $student->payment       = $request->payment;
+            $student->email         = $request->email;
             $student->groupe        = $request->groupe;
-            $student->formation      = $request->formation;
-            $student->phone_number = $request->phone_number;
+            $student->formation     = $request->formation;
+            $student->phone_number  = $request->phone_number;
             $student->save();
 
             Toastr::success('Ajout avec succès :)','Succés');

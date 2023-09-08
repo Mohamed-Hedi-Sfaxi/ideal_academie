@@ -5,14 +5,6 @@
                 <li class="menu-title">
                     <span>Menu Principal</span>
                 </li>
-                @if (Session::get('role_name') === 'Directeur')
-                <li class="{{set_active(['setting/page'])}}">
-                    <a href="{{ route('setting/page') }}">
-                        <i class="fas fa-cog"></i> 
-                        <span> Paramétres</span>
-                    </a>
-                </li>
-                @endif
                 <li class="{{set_active(['home'])}}">
                     <a href="{{ route('home') }}">
                         <i class="feather-grid"></i> 

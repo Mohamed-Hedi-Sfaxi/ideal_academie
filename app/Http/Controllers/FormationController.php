@@ -32,7 +32,6 @@ class FormationController extends Controller
             'exam_cost'     => 'required|string',
             'form_cost'     => 'required|string',
             'period'        => 'required|string',
-            'definition'    => 'required|string',
             'description'   => 'required|string',
         ]);
 
@@ -45,7 +44,6 @@ class FormationController extends Controller
             $formation->exam_cost   = $request->exam_cost;
             $formation->form_cost   = $request->form_cost;
             $formation->period      = $request->period;
-            $formation->definition  = $request->definition;
             $formation->description = $request->description;
             $formation->save();
 
@@ -81,7 +79,6 @@ class FormationController extends Controller
                 'exam_cost'     => $request->exam_cost,
                 'form_cost'     => $request->form_cost,
                 'period'        => $request->period,
-                'definition'    => $request->definition,
                 'description'   => $request->description,
             ];
             Formation::where('id',$request->id)->update($update);

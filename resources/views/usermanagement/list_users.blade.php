@@ -42,7 +42,6 @@
                                         <th>Téléphone</th>
                                         <th>Date D'adhésion</th>
                                         <th>Rôle</th>
-                                        <th>Statut</th>
                                         <th class="text-end">Action</th>
                                     </tr>
                                 </thead>
@@ -56,15 +55,6 @@
                                         <td>{{ $list->phone_number }}</td>
                                         <td>{{ $list->join_date }}</td>
                                         <td>{{ $list->role_name }}</td>
-                                        <td>
-                                            <div class="edit-delete-btn">
-                                                @if ($list->status === 'Active')
-                                                <a class="text-success">{{ $list->status }}</a>
-                                                @elseif ($list->status === 'Désactivé')
-                                                <a class="text-warning">{{ $list->status }}</a> 
-                                                @endif
-                                            </div>
-                                        </td>
                                         <td class="text-end">
                                             <div class="actions">
                                                 <a href="{{ url('view/user/edit/'.$list->user_id) }}"class="btn btn-sm bg-danger-light">
