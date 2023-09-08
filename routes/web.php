@@ -33,7 +33,7 @@ function set_active( $route ) {
     return Request::path() == $route ? 'active' : '';
 }
 
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('auth.login');
 });
 
